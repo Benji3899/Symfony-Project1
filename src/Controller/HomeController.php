@@ -9,10 +9,10 @@ use function Symfony\Component\String\u;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', 'home', methods: ['GET'])]
+    #[Route('/', name: 'home', methods: ['GET'])]
     public function index(): Response
     {
-        $prenoms = ['jean-pierre', 'tom', 'bob'];
+        $prenoms = ['Jean', 'Tom', 'Bob'];
 
         return $this->render('home.html.twig', [
             'prenoms' => $prenoms
@@ -23,7 +23,7 @@ class HomeController extends AbstractController
     // Par défaut le chemin avant {e} n'est pas accessible dans l'URL. Donc je ne peux pas me rendre à /hello
     // Pour résoudre ce problème je dois rendre {e} facultatif en
     // ajoutant = null dans les paramètres de la function hello($name)
-    #[Route('/hello/{name}', name: 'toto' )]
+    #[Route('/hello/{name}',  name: 'hello' )]
     public function hello($name = null): Response
     {
         return $this->render('hello.html.twig', [
