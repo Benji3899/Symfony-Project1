@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home', methods: ['GET'])]
+    #[Route('/home', name: 'app_home', methods: ['GET'])]
     public function index(): Response
     {
         $prenoms = ['Jean', 'Tom', 'Bob'];
@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     // Par défaut le chemin avant {e} n'est pas accessible dans l'URL. Donc je ne peux pas me rendre à /hello
     // Pour résoudre ce problème je dois rendre {e} facultatif en
     // ajoutant = null dans les paramètres de la function hello($name)
-    #[Route('/hello/{name}',  name: 'hello' )]
+    #[Route('/hello/{name}',  name: 'app_hello' )]
     public function hello($name = null): Response
     {
         return $this->render('hello.html.twig', [

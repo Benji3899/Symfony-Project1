@@ -9,7 +9,7 @@ use function Symfony\Component\String\u;
 
 class VinylController extends AbstractController
 {
-    #[Route('/', name: 'vinyl')]
+    #[Route('/', name: 'app_vinyl')]
     public function index(): Response
     {
 //        $tracks = [
@@ -40,7 +40,7 @@ class VinylController extends AbstractController
         ]);
 
     }
-    #[Route('/browse/{slug}', name: 'browse')]
+    #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null): Response
     {
 //        if($slug) {

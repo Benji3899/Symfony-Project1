@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Projet 1{% endblock %}</title>
@@ -17,7 +17,7 @@
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
         {# encore_entry_link_tags('app') #}
-{#        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">#}
+        {#        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">#}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {% endblock %}
 
@@ -33,7 +33,7 @@
 {% block body %}{% endblock %}
 
 {% block footer %}
-{% include "components/_footer.html.twig" %}
+    {% include "components/_footer.html.twig" %}
 {% endblock %}
 
 </body>

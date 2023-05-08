@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <h1>HomePage</h1>
         {%  for prenom in prenoms %}
-            <a href="{{ path('hello',{ name:prenom}) }}">{{ prenom }}</a>
+            <a href="{{ path('app_hello',{ name:prenom}) }}">{{ prenom }}</a>
         {% endfor %}
     </div>
 
