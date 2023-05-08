@@ -4,12 +4,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Config\Doctrine\Dbal\ConnectionConfig\ReplicaConfig;
-use function Symfony\Component\String\u;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home', methods: ['GET'])]
+    #[Route('/home', name: 'home', methods: ['GET'])]
     public function index(): Response
     {
         $prenoms = ['Jean', 'Tom', 'Bob'];
@@ -29,16 +27,5 @@ class HomeController extends AbstractController
         return $this->render('hello.html.twig', [
             'name' => $name
         ]);
-    }
-
-    #[Route('/browse/{slug}')]
-    public function browse(string $slug = null): Response
-    {
-        if($slug) {
-            $title = 'Genre: ' . u(str_replace('-', ' ', $slug))->title(true);
-        }else{
-            $title = 'All genre';
-        }
-        return new Response($title);
     }
 }
