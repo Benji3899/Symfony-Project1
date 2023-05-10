@@ -5,22 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 use function Symfony\Component\String\u;
 
 class VinylController extends AbstractController
 {
     #[Route('/', name: 'app_vinyl')]
-    public function index(): Response
+    public function index(Environment $twig): Response
     {
-//        $tracks = [
-//            'Gangsta\'s Paradise - Coolio',
-//            'Waterfalls - TLC',
-//            'Creep - Radiohead',
-//            'Kiss from a Rose - Seal',
-//            'On Bended Knee - Boyz II Men',
-//            'Fantasy - Mariah Carey',
-//        ];
-
         $tracks = [
             ['song' => 'Gangsta\'s Paradise', 'artiste' => 'Coolio'],
             ['song' => 'Waterfalls', 'artiste' => 'TLC'],
@@ -34,12 +26,18 @@ class VinylController extends AbstractController
 // et s'affiche directement sur la page
 //        dump($tracks); // s'affiche dans la debug bar (icone cible)
 
-        return $this->render('vinyl/index.html.twig', [
+//        return $this->render('vinyl/index.html.twig', [
+//            'title' => 'Vinyl Page',
+//            'tracks' => $tracks,
+//        ]);
+
+        $html = $twig->render('vinyl/index.html.twig', [
             'title' => 'Vinyl Page',
             'tracks' => $tracks,
         ]);
-
+        return new Response($html);
     }
+
     #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null): Response
     {
