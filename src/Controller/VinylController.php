@@ -26,26 +26,21 @@ class VinylController extends AbstractController
 // et s'affiche directement sur la page
 //        dump($tracks); // s'affiche dans la debug bar (icone cible)
 
-//        return $this->render('vinyl/index.html.twig', [
-//            'title' => 'Vinyl Page',
-//            'tracks' => $tracks,
-//        ]);
-
         $html = $twig->render('vinyl/index.html.twig', [
             'title' => 'Vinyl Page',
             'tracks' => $tracks,
         ]);
+
         return new Response($html);
     }
 
+    //Route variable grâce à la connection entre {name} et $name
+    // Par défaut le chemin avant {e} n'est pas accessible dans l'URL. Donc je ne peux pas me rendre à /browse
+    // Pour résoudre ce problème je dois rendre {e} facultatif en
+    // ajoutant = null dans les paramètres de la function browse($slug)
     #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null): Response
     {
-//        if($slug) {
-//            $title = 'Genre: ' . u(str_replace('-', ' ', $slug))->title(true);
-//        }else{
-//            $title = 'All genre';
-//        }
         $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
         return $this->render('vinyl/browse.html.twig', [
             'genre' => $genre
